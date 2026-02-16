@@ -211,6 +211,8 @@ with open("astro_jeopardy_facts.csv", "r") as file:
 
 
 #zip make it run through both lists at the same time
+#the chat assignment tells the llm almost who it is and tells it the answer is the i or facts_list and the j ot answer
+#the clues is an empty list that eventually gets filled with the clue function
 clues = []
 
 for i, j in zip(facts_list, answer):
@@ -222,5 +224,6 @@ for i, j in zip(facts_list, answer):
      clue = prompt_llm(messages)
      clues.append(clue)
 print(clues)
+
 
 
