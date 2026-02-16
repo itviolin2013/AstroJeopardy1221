@@ -49,6 +49,7 @@ else:
 
 with open('.gitignore', 'r') as f:
     content = f.read()
+    
     if '.env' in content:
         print("Confirmed that .gitignore has the .env exclusion")
     else: 

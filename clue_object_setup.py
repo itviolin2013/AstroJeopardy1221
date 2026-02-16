@@ -1,7 +1,7 @@
 # clue_object_setup.ipynb
 
 import numpy as np
-from AI_Setup1.py import prompt_llm
+from AI_Setup import prompt_llm
 
 class Tile:
     """Class for each tile"""
