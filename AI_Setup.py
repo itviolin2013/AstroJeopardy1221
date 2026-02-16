@@ -105,8 +105,9 @@ def prompt_llm(messages, model="openai/GPT-4.1-mini", temperature=0.2, max_token
         answer = None
 
     return answer
-    def show_response_metadata(response):
-     '''
+
+def show_response_metadata(response):
+    '''
     Convert the response to a dictionary
     Print information about token usage and costs
     '''
