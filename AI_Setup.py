@@ -164,14 +164,6 @@ with open("astro_jeopardy_answers.csv", "r") as file:
             answers.append(line[1:])  # remove @ and get fact text
         # skip merge conflict lines and other non-fact lines"""
 
-    #facts = np.array(facts_list)
-    #desired_shape = (5, 6)
-    #facts2 = np.array(facts_list).reshape(desired_shape)
-    #print("Data array created successfully.")
-    #print(f"The array's shape is {facts2.shape}.")
-    #print(facts2)  # Show first 3 facts
-    #print(answers)
-#heyyy
 
 
 
@@ -219,20 +211,6 @@ with open("astro_jeopardy_facts.csv", "r") as file:
 
 from typing import Any
 
-#chat_assignment = f"""You are Alex Trebek hosting a game of Astronomy-themed Jeopardy. Generate one Jeopardy-style
-     #clue using the given facts, with the answer being {answer[1,2]} in the following category: {answer[0,2]}. 
-     #Do not mention the answer in the prompt, and only include the clue in your response."""
-#prompt = facts2[1,2]
-# Next steps: make a for loop to run through each individual clue and answer in facts array. Then append each one to a 
-# list and then make a numpy array. Read astro_jeopardy_facts.csv and also make it into a numpy array using the same 
-# method as above. Replace the prompt variable with the corresponding row and column from the numpy array (the one with facts)
-
-#messages = [{"role": "system", "content": chat_assignment}, 
-#{"role": "user", "content": prompt}]
-
-#response = prompt_llm(messages)
-#print(show_response_metadata(response))
-#print(answer[1,2])
 #zip make it run through both lists at the same time
 clues = []
 
@@ -245,15 +223,5 @@ for i, j in zip(facts_list, answer):
      clue = prompt_llm(messages)
      clues.append(clue)
 print(clues)
-#list = []
-#for i in facts_list:
-     #for element in row:
-          #chat_assignment = f"""You are Alex Trebek hosting a game of Astronomy-themed Jeopardy. Generate one Jeopardy-style
-          #clue using the given facts, with the answer being {answer[1,2]} in the following category: {answer[0,2]}. 
-          #Do not mention the answer in the prompt, and only include the clue in your response."""
-          #prompt = element
-          #messages = [{"role": "system", "content": chat_assignment}, 
-          #{"role": "user", "content": prompt}]
-          #clue = prompt_llm(messages)
-          #list.append(clue)
-#print(list)
+
+
