@@ -209,8 +209,6 @@ with open("astro_jeopardy_facts.csv", "r") as file:
     """
 
 
-from typing import Any
-
 #zip make it run through both lists at the same time
 clues = []
 
