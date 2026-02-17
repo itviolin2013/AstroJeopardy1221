@@ -176,14 +176,14 @@ else:
 # Note: np.genfromtxt expects the SAME number of columns on every row.
 # The header has no @ (1 column), but fact lines have @ at start (2 columns) -> "got 2 columns instead of 1"
 # Fix: read line-by-line and extract the fact text (everything after @)
-facts_list = []
+
 with open("astro_jeopardy_facts.csv", "r") as file:
     reader = csv.reader(file)
     try:
-      fact = np.genfromtxt("astro_jeopardy_facts.csv", delimiter="@", dtype=str)
+      facts = np.genfromtxt("astro_jeopardy_facts.csv", delimiter="@", dtype=str)
       # print("Data array created successfully.")
       # print(f"The array's shape is {fact.shape}.")
-      fact = fact.flatten()
+      facts = facts.flatten()
       # print(fact)
     except Exception as e:
        print(f"Error creating data array: {e}")
@@ -213,7 +213,7 @@ answer = create_answers()
 def create_clues():
     clues = []
 
-    for i, j in zip(facts_list, answer):
+    for i, j in zip(facts, answer):
         chat_assignment = f"""You are Alex Trebek hosting a game of Astronomy-themed Jeopardy. Generate one Jeopardy-style
             clue using the given facts, with the answer being {i} in the following category: {j}
             Do not mention the answer in the prompt, and only include the clue in your response."""
