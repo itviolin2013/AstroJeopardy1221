@@ -147,23 +147,18 @@ else:
     print("astro_jeopardy_answers.csv does not exist in the current directory.")
 
 # read the file
-answers = []
-with open("astro_jeopardy_answers.csv", "r") as file:
-    reader = csv.reader(file)
-    try:
-      answer = np.genfromtxt("astro_jeopardy_answers.csv", delimiter=",", dtype=str)
-      print("Data array created successfully.")
-      print(f"The array's shape is {answer.shape}.")
-      answer = answer.flatten()
-      print(answer)
-    except Exception as e:
-       print(f"Error creating data array: {e}")
-    """next(file)  # skip header row
-    for line in file:
-        #line = line.strip()
-        if line.startswith(","):
-            answers.append(line[1:])  # remove @ and get fact text
-        # skip merge conflict lines and other non-fact lines"""
+def create_answers():
+    with open("astro_jeopardy_answers.csv", "r") as file:
+        reader = csv.reader(file)
+        try:
+            answer = np.genfromtxt("astro_jeopardy_answers.csv", delimiter=",", dtype=str)
+            # print("Data array created successfully.")
+            # print(f"The array's shape is {answer.shape}.")
+            answer = answer.flatten()
+            # print(answer)
+        except Exception as e:
+            print(f"Error creating data array: {e}")
+    return answer
 
 
 
@@ -186,10 +181,10 @@ with open("astro_jeopardy_facts.csv", "r") as file:
     reader = csv.reader(file)
     try:
       fact = np.genfromtxt("astro_jeopardy_facts.csv", delimiter="@", dtype=str)
-      print("Data array created successfully.")
-      print(f"The array's shape is {fact.shape}.")
+      # print("Data array created successfully.")
+      # print(f"The array's shape is {fact.shape}.")
       fact = fact.flatten()
-      print(fact)
+      # print(fact)
     except Exception as e:
        print(f"Error creating data array: {e}")
 
@@ -209,21 +204,24 @@ with open("astro_jeopardy_facts.csv", "r") as file:
     print(facts_list)
     """
 
+answer = create_answers()
 
 #zip make it run through both lists at the same time
 #the chat assignment tells the llm almost who it is and tells it the answer is the i or facts_list and the j ot answer
 #the clues is an empty list that eventually gets filled with the clue function
-clues = []
 
-for i, j in zip(facts_list, answer):
-     chat_assignment = f"""You are Alex Trebek hosting a game of Astronomy-themed Jeopardy. Generate one Jeopardy-style
-          clue using the given facts, with the answer being {i} in the following category: {j}
-          Do not mention the answer in the prompt, and only include the clue in your response."""
-     messages = [{"role": "system", "content": chat_assignment}, 
-          {"role": "user", "content": i}]
-     clue = prompt_llm(messages)
-     clues.append(clue)
-print(clues)
+def create_clues():
+    clues = []
 
+    for i, j in zip(facts_list, answer):
+        chat_assignment = f"""You are Alex Trebek hosting a game of Astronomy-themed Jeopardy. Generate one Jeopardy-style
+            clue using the given facts, with the answer being {i} in the following category: {j}
+            Do not mention the answer in the prompt, and only include the clue in your response."""
+        messages = [{"role": "system", "content": chat_assignment}, 
+            {"role": "user", "content": i}]
+        clue = prompt_llm(messages)
+        clues.append(clue)
+    print(clues)
+    return clues
 
-
+create_clues()
