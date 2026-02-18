@@ -19,7 +19,7 @@ def play():
 
     return point_values, category
 
-play()
+
 
 
     

@@ -30,8 +30,9 @@ def host_chat_with_player(player):
             return
         messages.append({"role": "assistant", "content": ai_text})
         print(f"\nHost: {ai_text.strip()}")
-        user_input = input("\nYou: ")
-        messages.append({"role": "user", "content": user_input})
+        if _ <= max_rounds:
+            user_input = input("\nYou: ")
+            messages.append({"role": "user", "content": user_input})
 
     return 
 
@@ -44,7 +45,7 @@ def startGame():
     player1 = Player(name, occupation, age, location)
     host_chat_with_player(player1)
     
-    return 
+    return player1
 
-startGame()
+
 
