@@ -215,7 +215,7 @@ def create_clues():
 
     for i, j in zip(facts, answer):
         chat_assignment = f"""You are Alex Trebek hosting a game of Astronomy-themed Jeopardy. Generate one Jeopardy-style
-            clue using the given facts, with the answer being {i} in the following category: {j}
+            clue using the given facts, with the answer being {j}.
             Do not mention the answer in the prompt, and only include the clue in your response."""
         messages = [{"role": "system", "content": chat_assignment}, 
             {"role": "user", "content": i}]
