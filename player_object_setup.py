@@ -21,7 +21,7 @@ def host_chat_with_player(player):
     Your job: Ask exactly 2 or 3 short, friendly follow-up questions about them (e.g. what they study, what they're excited about). Ask ONE question per message. After they answer each, ask the next. After 2 or 3 questions total, ask if they're ready to play. If they respond with yes or an affirmative variant, respond ONLY with 'Starting the game... (this may take a while)'. If they respond with no or a disaffirmative variants, respond ONLY with 'Quitting the game...'. Keep every message brief—one question or one "Ready to play?" line only. Do not list multiple questions at once."""
 
     messages = [{"role": "system", "content": system_prompt}]
-    max_rounds = 4  # 2-3 Q&A + "ready to play?"
+    max_rounds = 5  # 2-3 Q&A + "ready to play?"
 
     for _ in range(max_rounds):
         ai_text = prompt_llm(messages, temperature=0.3)
