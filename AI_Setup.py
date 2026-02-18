@@ -54,6 +54,9 @@ with open('.gitignore', 'r') as f:
         print("Confirmed that .gitignore has the .env exclusion")
     else: 
         print("Error: Did not find .env in .gitignore. Please download .gitignore from carmen and put with your class notebooks.")
+
+
+
 def prompt_llm(messages, model="openai/GPT-4.1-mini", temperature=0.2, max_tokens=1000):
     """
     Send a prompt or conversation to an LLM using LiteLLM and return the response.
@@ -101,7 +104,7 @@ def prompt_llm(messages, model="openai/GPT-4.1-mini", temperature=0.2, max_token
         #print("\n")
 
     except Exception as e:
-       # print(f"\nERROR: Could not connect. Details:\n{e}")    
+        print(f"\nERROR: Could not connect. Details:\n{e}")    
         answer = None
 
     return answer
@@ -224,7 +227,10 @@ def create_clues(answer):
     cluesArray = np.array(clues)
     cluesArray = cluesArray.reshape(5, 6)
     answerArray = answer.reshape(5, 6)
+    print(f"Clues generated successfully.")
     return cluesArray, answerArray
 
+def compare_answer(answerInput):
+    
 
 
