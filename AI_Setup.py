@@ -7,6 +7,7 @@ import numpy as np
 import csv
 import time
 
+
 # Suppress specific Pydantic warnings that clutter the output
 warnings.filterwarnings("ignore", category=UserWarning, module="pydantic")
 
@@ -54,6 +55,9 @@ with open('.gitignore', 'r') as f:
         print("Confirmed that .gitignore has the .env exclusion")
     else: 
         print("Error: Did not find .env in .gitignore. Please download .gitignore from carmen and put with your class notebooks.")
+
+
+
 def prompt_llm(messages, model="openai/GPT-4.1-mini", temperature=0.2, max_tokens=1000):
     """
     Send a prompt or conversation to an LLM using LiteLLM and return the response.
@@ -101,7 +105,7 @@ def prompt_llm(messages, model="openai/GPT-4.1-mini", temperature=0.2, max_token
         #print("\n")
 
     except Exception as e:
-       # print(f"\nERROR: Could not connect. Details:\n{e}")    
+        print(f"\nERROR: Could not connect. Details:\n{e}")    
         answer = None
 
     return answer
@@ -224,7 +228,27 @@ def create_clues(answer):
     cluesArray = np.array(clues)
     cluesArray = cluesArray.reshape(5, 6)
     answerArray = answer.reshape(5, 6)
+    print(f"Clues generated successfully.")
     return cluesArray, answerArray
 
+def compare_answer(correctAnswer, answerInput):
+    chat_assignment = f"""This is a game of Jeopardy and you will be given the player's guess to the answer. 
+                        The correct answer to the question is "What is {correctAnswer}?" (or "Who is {correctAnswer}?" if the 
+                        correct answer is a person). Grade the player's guess and 
+                        respond ONLY with "Correct", "Incorrect", or "Please respond with your answer formatted as a question." 
+                        according in accordance with the parameters provided: If the player makes a minor spelling error (ex. 
+                        guessing "What is the molky way?" instead of "what is the milky way?"), the answer should still be 
+                        marked as correct. If the player gives a common synonym or alternate name for the answer, (ex. guessing 
+                        "What is the Andromeda Galaxy?" instead of "What is M31?"), the answer should still be marked as correct. 
+                        The player must respond with the answer formatted as a question, otherwise you should respond with "Please 
+                        respond with your answer formatted as a question." Any other guess that does not fall into these parameters
+                        should be marked as incorrect."""
+    messages = [{"role":"system", "content": chat_assignment}, 
+                {"role": "user", "content": answerInput}]
+    chatAnswer = prompt_llm(messages)
+    print(chatAnswer)
+    return chatAnswer
+
+compare_answer("M31", "What is the Andromeda Galaxy?")
 
 
