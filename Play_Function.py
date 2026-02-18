@@ -1,4 +1,6 @@
 import numpy as np
+# creates a new function that allows category selection and point values into a box
+# also allows for one error in spelling and can 
 
 categories = ["exoplanets", "blackholes", "galaxies", "stars", "solar system"]
 point_values = ["100", "200", "300", "400", "500"]
