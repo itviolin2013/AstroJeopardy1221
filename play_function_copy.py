@@ -5,7 +5,7 @@ import numpy as np
 categories = ["exoplanets", "galaxies", "constellations", "solar system", "moons", "astronomers"]
 point_values = ["100", "200", "300", "400", "500"]
 
-def play():
+def meow():
     category = input("Enter your catagory: exoplanets, galaxies, constellations, solar system, moons, astronomers")
 
     if category not in categories:
@@ -14,14 +14,7 @@ def play():
     if category in categories:
         point_values = input("select point value: 100, 200, 300, 400, 500")
 
-    if point_values not in point_values:
-        point_values = input("Please select a valid point value: 100, 200, 300, 400, 500")
+        if point_values not in point_values:
+            point_values = input("Please select a valid point value: 100, 200, 300, 400, 500")
 
     return point_values, category
-
-
-
-
-    
-
-
