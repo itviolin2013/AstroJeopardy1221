@@ -13,12 +13,12 @@ class Player:
 def host_chat_with_player(player):
     """LLM host asks 2-3 follow-up questions about the player, then asks if they're ready to play."""
     system_prompt = f"""You are a welcoming, charismatic Jeopardy host for AstroJeopardy. You have this player's info:
-- Name: {player.playerName}
-- Age: {player.playerAge}
-- Occupation: {player.playerOccupation}
-- Location: {player.playerTown}
+    - Name: {player.playerName}
+    - Age: {player.playerAge}
+    - Occupation: {player.playerOccupation}
+    - Location: {player.playerTown}
 
-Your job: Ask exactly 2 or 3 short, friendly follow-up questions about them (e.g. what they study, what they're excited about). Ask ONE question per message. After they answer each, ask the next. After 2 or 3 questions total, ask if they're ready to play. Keep every message brief—one question or one "Ready to play?" line only. Do not list multiple questions at once."""
+    Your job: Ask exactly 2 or 3 short, friendly follow-up questions about them (e.g. what they study, what they're excited about). Ask ONE question per message. After they answer each, ask the next. After 2 or 3 questions total, ask if they're ready to play, telling them to type yes or no. If they respond with yes or an affirmative variant, respond ONLY with 'Starting the game...'. If they respond with no or a disaffirmative variants, respond ONLY with 'Quitting the game...'. Keep every message brief—one question or one "Ready to play?" line only. Do not list multiple questions at once."""
 
     messages = [{"role": "system", "content": system_prompt}]
     max_rounds = 4  # 2-3 Q&A + "ready to play?"
@@ -30,16 +30,25 @@ Your job: Ask exactly 2 or 3 short, friendly follow-up questions about them (e.g
             return
         messages.append({"role": "assistant", "content": ai_text})
         print(f"\nHost: {ai_text.strip()}")
+        if ai_text == "Starting the game...":
+            break
+        elif ai_text == "Quitting the game...":
+            end = True
         user_input = input("\nYou: ")
         messages.append({"role": "user", "content": user_input})
 
+    return end
 
-print("Hello, Welcome to AstroJeopardy! Please enter user information.")
-name = input("Enter your name: ")
-age = input("Enter your age: ")
-occupation = input("Enter your occupation: ")
-location = input("Enter your location: ")
+def startGame():
+    print("Hello, Welcome to AstroJeopardy! Please enter user information.")
+    name = input("Enter your name: ")
+    age = input("Enter your age: ")
+    occupation = input("Enter your occupation: ")
+    location = input("Enter your location: ")
+    player1 = Player(name, occupation, age, location)
+    end = host_chat_with_player(player1)
+    
+    return end
 
-player1 = Player(name, occupation, age, location)
+startGame()
 
-host_chat_with_player(player1)
