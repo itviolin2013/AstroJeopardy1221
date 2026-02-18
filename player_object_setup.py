@@ -31,9 +31,11 @@ def host_chat_with_player(player):
         messages.append({"role": "assistant", "content": ai_text})
         print(f"\nHost: {ai_text.strip()}")
         if ai_text == "Starting the game...":
+            end = False
             break
         elif ai_text == "Quitting the game...":
             end = True
+            break
         user_input = input("\nYou: ")
         messages.append({"role": "user", "content": user_input})
 
