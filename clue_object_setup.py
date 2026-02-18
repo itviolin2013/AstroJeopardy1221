@@ -1,6 +1,5 @@
 # clue_object_setup.py
 
-from itertools import _T4
 import numpy as np
 t1 = None
 t2 = None
@@ -60,6 +59,5 @@ def generate_tiles(clues, answers, pointValue, isDD, beenUsed):
         for column in range(6):
             board[row][column] = Tile(clues[row][column], answers[row][column], pointValue[row][column], isDD[row][column], beenUsed[row][column])
     print(board[0][0].answer)
-    print(board)
     return board
 
