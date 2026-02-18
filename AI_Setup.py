@@ -221,8 +221,10 @@ def create_clues():
             {"role": "user", "content": i}]
         clue = prompt_llm(messages)
         clues.append(clue)
-    print(clues)
-    return clues
+    cluesArray = np.array(clues)
+    cluesArray = cluesArray.reshape(5, 6)
+    answerArray = answer.reshape(5, 6)
+    return cluesArray, answerArray
 
-create_clues()
+
 
