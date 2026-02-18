@@ -27,7 +27,7 @@ def generate_tiles(clues, answers, pointValue, isDD, beenUsed):
                       [25, 26, 27, 28, 29, 30]])
     for row in range(5):
         for column in range(6):
-            board[row, column] = Tile(clues[row, column], answers[row, column], pointValue[row, column], isDD[row, column], beenUsed[row, column])
+            board[row][column] = Tile(clues[row][column], answers[row][column], pointValue[row][column], isDD[row][column], beenUsed[row][column])
     print(board[0, 0].answer)
     print(board)
     return board
