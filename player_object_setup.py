@@ -18,7 +18,7 @@ def host_chat_with_player(player):
     - Occupation: {player.playerOccupation}
     - Location: {player.playerTown}
 
-    Your job: Ask exactly 2 or 3 short, friendly follow-up questions about them (e.g. what they study, what they're excited about). Ask ONE question per message. After they answer each, ask the next. After 2 or 3 questions total, ask if they're ready to play, telling them to type yes or no. If they respond with yes or an affirmative variant, respond ONLY with 'Starting the game...'. If they respond with no or a disaffirmative variants, respond ONLY with 'Quitting the game...'. Keep every message brief—one question or one "Ready to play?" line only. Do not list multiple questions at once."""
+    Your job: Ask exactly 2 or 3 short, friendly follow-up questions about them (e.g. what they study, what they're excited about). Ask ONE question per message. After they answer each, ask the next. After 2 or 3 questions total, ask if they're ready to play. If they respond with yes or an affirmative variant, respond ONLY with 'Starting the game... (this may take a while)'. If they respond with no or a disaffirmative variants, respond ONLY with 'Quitting the game...'. Keep every message brief—one question or one "Ready to play?" line only. Do not list multiple questions at once."""
 
     messages = [{"role": "system", "content": system_prompt}]
     max_rounds = 4  # 2-3 Q&A + "ready to play?"
