@@ -210,7 +210,7 @@ answer = create_answers()
 #the chat assignment tells the llm almost who it is and tells it the answer is the i or facts_list and the j ot answer
 #the clues is an empty list that eventually gets filled with the clue function
 
-def create_clues():
+def create_clues(answer):
     clues = []
 
     for i, j in zip(facts, answer):
