@@ -3,11 +3,12 @@ from AI_Setup import prompt_llm
 
 class Player:
     """Class for the player"""
-    def __init__(self, playerName, playerOccupation, playerAge, playerTown):
+    def __init__(self, playerName, playerOccupation, playerAge, playerTown, points=0):
         self.playerName = playerName
         self.playerOccupation = playerOccupation
         self.playerAge = playerAge
         self.playerTown = playerTown
+        self.points = points
 
 def host_chat_with_player(player):
     """LLM host asks 2-3 follow-up questions about the player, then asks if they're ready to play."""
