@@ -35,6 +35,7 @@ t30 = None
 
 # Creates a class to bundle variables together
 # Within the class are methods that are able to be used, and allows for information to be identified manually
+#The class Tile is used in the generate_tiles function as a way to define that each clue, answer is DD, and point value etc is already defined by the predetermined variables
 
 class Tile:
     """Class for each tile"""
