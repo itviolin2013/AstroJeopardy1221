@@ -1,6 +1,7 @@
 # clue_object_setup.py
 
 import numpy as np
+# Creates a bunch of empty variables to put into the board
 t1 = None
 t2 = None
 t3 = None
@@ -32,6 +33,9 @@ t28 = None
 t29 = None
 t30 = None
 
+# Creates a class to bundle variables together
+# Within the class are methods that are able to be used, and allows for information to be identified manually
+
 class Tile:
     """Class for each tile"""
 
@@ -60,4 +64,7 @@ def generate_tiles(clues, answers, pointValue, isDD, beenUsed):
             board[row][column] = Tile(clues[row][column], answers[row][column], pointValue[row][column], isDD[row][column], beenUsed[row][column])
     print(board[0][0].answer)
     return board
+# Function that actually generates the board
+# The rows and colums each have a diffrent clue and answer based on catagories and point value
+# The daily double function is used and called on a randon row and column in each game 
 
