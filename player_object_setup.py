@@ -1,5 +1,10 @@
 import numpy as np
 from AI_Setup import prompt_llm
+#creates a new class that allows the player to enter their name, age, occupation and location
+#creates a new function that prompts the host to ask the player two to three questions (one at a time) based on their name, age, occupation and location 
+#creates a new function that allows the player to answer the questions and the host to respond with the next question
+#once the host has asked the player two to three questions and the player has answered them the host will respond with "Let's start playing!"
+
 
 class Player:
     """Class for the player"""
