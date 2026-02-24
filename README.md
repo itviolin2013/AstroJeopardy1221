@@ -1,6 +1,7 @@
-The following is a discription given from Carmen. 
+The following is a description given from Carmen. 
 
 **Project 14: Astronomy Jeopardy Game Generator**
+
 Build a fully functional Jeopardy-style astronomy game that generates questions from real astronomy facts and manages gameplay. The challenge is parsing factual content to create clever reverse-questions, implementing game logic with proper scoring, and maintaining the distinctive Jeopardy style while ensuring educational value.
 
 Students collect astronomy facts from various sources (textbooks, NASA fact sheets, Wikipedia) and organize them into text files  by category. The system uses string manipulation to transform facts into Jeopardy-style answers, stores questions in nested dictionaries organized by category and dollar value, implements game state tracking with NumPy arrays (scores, question availability, 
