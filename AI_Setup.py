@@ -213,6 +213,9 @@ answer = create_answers()
 #zip make it run through both lists at the same time
 #the chat assignment tells the llm almost who it is and tells it the answer is the i or facts_list and the j ot answer
 #the clues is an empty list that eventually gets filled with the clue function
+# The reshape function is used to make the array 5 rows and 6 columns instead of having it as one long array
+#the chat assignment tells the AI to act as if it is Alex Trebek hosting a game of Astronomy-themed Jeopardy so that questions are generated in a way that makes it feel llike you are participating in the actual game
+
 
 def create_clues(answer):
     clues = []
@@ -250,5 +253,8 @@ def compare_answer(correctAnswer, answerInput):
     return chatAnswer
 
 compare_answer("M31", "What is the Andromeda Galaxy?")
+# The compare_answer function is used to compare the player's guess to the correct answer
+# There are some parameters that are used to make sure that the player's guess is formatted correctly as a question like if they were actively playing
+#The response is said to either be correct, incorrect, or have it said it needs to be formatted as a question. Later in the code there is something that allows a player to try the question again if the formstting is not correct 
 
 
