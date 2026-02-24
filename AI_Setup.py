@@ -180,15 +180,15 @@ else:
 # Note: np.genfromtxt expects the SAME number of columns on every row.
 # The header has no @ (1 column), but fact lines have @ at start (2 columns) -> "got 2 columns instead of 1"
 # Fix: read line-by-line and extract the fact text (everything after @)
+# Also deletes the @ when it reads the file so it doesnt show up in the facts or anything
+#The array is flattened so that it is not in 2D 
+
 
 with open("astro_jeopardy_facts.csv", "r") as file:
     reader = csv.reader(file)
     try:
       facts = np.genfromtxt("astro_jeopardy_facts.csv", delimiter="@", dtype=str)
-      # print("Data array created successfully.")
-      # print(f"The array's shape is {fact.shape}.")
       facts = facts.flatten()
-      # print(fact)
     except Exception as e:
        print(f"Error creating data array: {e}")
 
